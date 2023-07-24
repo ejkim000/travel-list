@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function Item({ item }) {
+function Item({ item, onPackedItem }) {
+    
+    const handleOnClick = () => {
+        onPackedItem(item.id);
+    }
+
     return (
         <div>
             <li>
-                <span>
+                <span style={ item.packed ? {textDecoration: 'line-through'} : {} }>
                     {item.quantity} {item.description}
                 </span>
-                <button> ❌ </button>
+                <button onClick={handleOnClick}> ❌ </button>
             </li>
         </div>
     )
 }
 
-export default Item
+export default Item;

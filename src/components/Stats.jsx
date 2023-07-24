@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-function Stats() {
+function Stats({ totalItems, packedTotal }) {
+  
   return (
     <footer className='stats'>
-        <em>🧳You have X items on your list, and you have alreadt packed X (X&)</em>
+        <em>🧳You have {totalItems} items on your list, and you have alreadt packed {packedTotal} ({(packedTotal/totalItems * 100).toFixed(0)} %)</em>
     </footer>
   )
 }
 
-export default Stats
+export default Stats;

@@ -2,12 +2,17 @@ import React from 'react';
 import Item from './Item';
 
 
-function PackingList({ initialItems }) {
+function PackingList({ items, onPackedItem }) {
+
   return (
     <div className='list'>
         <ul>
-            {initialItems.map((item)=>(
-                <Item key={item.id} item={item} />
+            {items.map((item)=>(
+                <Item 
+                key={item.id} 
+                item={item} 
+                onPackedItem={onPackedItem}
+                />
             ))}
         </ul>
     </div>
