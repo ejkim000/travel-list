@@ -28,23 +28,28 @@ function App() {
     setTotalItems(prev => prev + 1);
   };
 
-  const handlePackedItem = (id) => {
+  // const handlePackedItem = (id) => {
 
-    setPackedTotal(0);
+  //   setPackedTotal(0);
 
-    items.map((item) => {
+  //   items.map((item) => {
 
-      if (item.id === id) {
-        item.packed = !item.packed
-      }
+  //     if (item.id === id) {
+  //       item.packed = !item.packed
+  //     }
 
-      if (item.packed) setPackedTotal(prev => prev + 1);
+  //     if (item.packed) setPackedTotal(prev => prev + 1);
 
-    });
+  //   });
 
-    setItems(items);
+  //   setItems(items);
 
-  };
+  // };
+
+  const handleDeleteItem = (id) => {
+    // filter out the id that matchs the object id
+    setItems (items.filter(item => item.id !== id));
+  }
 
 
   return (
@@ -53,7 +58,8 @@ function App() {
       <Form onAddItems={handleAddItems} />
       <PackingList 
       items={items} 
-      onPackedItem={handlePackedItem}
+      // onPackedItem={handlePackedItem}
+      onDeleteItem={handleDeleteItem}
       />
       <Stats totalItems={totalItems} packedTotal={packedTotal} />
     </div>

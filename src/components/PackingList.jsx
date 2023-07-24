@@ -2,8 +2,8 @@ import React from 'react';
 import Item from './Item';
 
 
-function PackingList({ items, onPackedItem }) {
-
+// function PackingList({ items, onPackedItem }) {
+function PackingList({ items, onDeleteItem }) {
   return (
     <div className='list'>
         <ul>
@@ -11,7 +11,8 @@ function PackingList({ items, onPackedItem }) {
                 <Item 
                 key={item.id} 
                 item={item} 
-                onPackedItem={onPackedItem}
+                // onPackedItem={onPackedItem}
+                onDeleteItem={onDeleteItem}
                 />
             ))}
         </ul>
@@ -19,4 +20,4 @@ function PackingList({ items, onPackedItem }) {
   )
 }
 
-export default PackingList
+export default PackingList;
