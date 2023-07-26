@@ -1,10 +1,20 @@
 import React from 'react';
 
-function Stats({ totalItems, packedTotal }) {
+function Stats({ items }) {
   
+  const numItems = items.length;
+  const numPacked = items.filter((item) => item.packed).length;
+  const percentage = Math.round(numPacked / numItems * 100);
+
   return (
     <footer className='stats'>
-        <em>🧳You have {totalItems} items on your list, and you have alreadt packed {packedTotal} ({(packedTotal/totalItems * 100).toFixed(0)} %)</em>
+      {/* if percentage equals 100 render you have everything packed. you are ready to go */}
+      {percentage === 100 ? 
+      'You packed everything you are ready to go! ✈️✈️✈️'
+      : 
+      (<em>🧳You have {numItems} items on your list, and you have already packed {numPacked} ({percentage} %)</em>)
+      }
+        
     </footer>
   )
 }

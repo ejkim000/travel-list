@@ -14,9 +14,6 @@ function App() {
 
   // For lifting up state from Form
   const [items, setItems] = useState([]);
-  const [totalItems, setTotalItems] = useState(0);
-  const [packedTotal, setPackedTotal] = useState(0);
-
 
   const handleAddItems = (item) => {
 
@@ -25,43 +22,30 @@ function App() {
       item
     ]);
 
-    setTotalItems(prev => prev + 1);
   };
-
-  // const handlePackedItem = (id) => {
-
-  //   setPackedTotal(0);
-
-  //   items.map((item) => {
-
-  //     if (item.id === id) {
-  //       item.packed = !item.packed
-  //     }
-
-  //     if (item.packed) setPackedTotal(prev => prev + 1);
-
-  //   });
-
-  //   setItems(items);
-
-  // };
 
   const handleDeleteItem = (id) => {
     // filter out the id that matchs the object id
-    setItems (items.filter(item => item.id !== id));
+    setItems(items.filter(item => item.id !== id));
   }
 
+  const handleToggleItem = (id) => {
+    setItems((items) => items.map((item) => item.id === id ? {
+      ...item,
+      packed: !item.packed
+    } : item ));
+  }
 
   return (
     <div className='app'>
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList 
-      items={items} 
-      // onPackedItem={handlePackedItem}
-      onDeleteItem={handleDeleteItem}
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
       />
-      <Stats totalItems={totalItems} packedTotal={packedTotal} />
+      <Stats items={items} />
     </div>
   )
 }
